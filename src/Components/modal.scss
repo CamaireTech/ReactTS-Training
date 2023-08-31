@@ -14,7 +14,7 @@ div.modalContainer{
         background-color: white;
         padding: 30px;
         width: fit-content;
-        margin: 15% auto;
+        margin: 5% auto;
         border-radius: 10px;
     }
 
@@ -25,7 +25,7 @@ div.modalContainer{
         align-items: center;
     }
     div.actualContent{
-        input.input{
+        .input{
             display: block;
             margin: 10px 0px;
             background-color: turquoise;
