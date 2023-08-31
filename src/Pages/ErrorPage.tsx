@@ -8,6 +8,8 @@ export const ErrorPage =() =>{
     if(isRouteErrorResponse(error)){
         return (
             <div>
+                <h1>OOPS</h1>
+                <p>Sorry , An error occured !</p>
                 {error?.statusText}
             </div>
         )

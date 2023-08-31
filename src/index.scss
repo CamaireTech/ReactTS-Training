@@ -6,3 +6,8 @@
 p,h1,h2,h3,h4,h5,h6,span,label{
     font-family: 'Poppins', sans-serif;
 }
+
+div.MainApplication{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
