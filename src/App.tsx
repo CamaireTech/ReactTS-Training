@@ -16,7 +16,7 @@ function App() {
   const [modalOpen,setModalOpen] = useState<boolean | undefined>(true)
 
   const handleAddMission =()=>{
-    document.body.style.height = "fir-content"
+    document.body.style.height = "fit-content"
     document.body.style.overflow = "hidden"
     setModalOpen(prev=>!prev)
   }
