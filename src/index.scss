@@ -8,12 +8,73 @@ p,h1,h2,h3,h4,h5,h6,span,label{
     color: #201e21;
 }
 
-div.MainApplication{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
 svg:hover{
     color: #234E70;
     cursor: pointer;
     transition: .7s;
+}
+div#missionDisplay{
+    width: 50%;
+    margin: auto;
+
+    div.addMissinContainer{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color:  #4D8963;
+        color: white !important;
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #4D8963;
+        margin: 10px 0px;
+
+        &:hover{
+            border: 2px solid #69A583;
+            transition: 0.4s;
+        }
+
+        p{
+            color: white;
+            font-weight: bolder;
+        }
+    }
+
+    div.inputContainer{
+        padding: 20px;
+         background-color: #E0CC97;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: fit-content;
+        margin: auto;
+
+       input{
+         min-width: 290px;
+        background-color: #E0CC97;
+         color: white;
+         font-size: 20px;
+         font-weight: 400;
+         border-bottom: 2px solid white;
+       }
+    }
+    div.missionsContainer{
+        background-color: #94A684;
+        padding: 10px;
+        color: white !important;
+    }
+
+}
+
+div.missionListContainer{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid blue;
+    margin: 10px 0px;
+    div.missionList{
+        border: 1px solid blue;
+    }
+
+    div.selectedMissionDetails{
+        
+    }
 }

@@ -2,6 +2,8 @@ import React, {useContext,useState,useEffect} from "react"
 import { MissionContext } from "../../Context/MissionContext"
 import { IMissionInterface, MissionContextType } from "../../types/Mission"
 import { SingleMission } from "../SIngleMission/SingleSummaryMission"
+import { SingleDetailedMission } from "../SIngleMission/SingleDetailedMission"
+import {BsSearch} from "react-icons/bs"
 
 export const AllMissions = () =>{
 
@@ -9,6 +11,7 @@ export const AllMissions = () =>{
     const [allMissions,setAllMission] = useState<IMissionInterface[]>([])
 
     const [searchString,setSearchString] = useState<string>("")
+    const [selectedMission,setSelectedMission] = useState<IMissionInterface | null>(null)
 
     useEffect(()=>{
         setAllMission(missions)
@@ -33,16 +36,32 @@ export const AllMissions = () =>{
 
     return (
         <div>
-        <div>
-            <input type="text" value={searchString} onChange={e=>setSearchString(e.target.value)} style={{backgroundColor:"green"}}/>
+        <div className="inputContainer">
+            <BsSearch color="white" size={20} />
+            <input type="text" 
+            placeholder="Search for a mission"
+            value={searchString} 
+            onChange={e=>setSearchString(e.target.value)}/>
         </div>
-        {allMissions.map((mission,index)=>{
-            return(
-                <React.Fragment key={index}>
-                    <SingleMission mission={mission} />
-                </React.Fragment>
-            )
-        })}
+
+        {/* LIST OF ALL MISSIONS  */}
+        <div className="missionListContainer">
+            <div className="missionList">
+            {allMissions.map((mission,index)=>{
+                return(
+                    <div key={index} onClick={()=>setSelectedMission(mission)}>
+                        <SingleMission mission={mission} />
+                    </div>
+                )
+            })}
+            </div>
+                {/* DETAILS OF SELECTED MISSION */}
+                <div className="selectedMissionDetails">
+                    <SingleDetailedMission  mission={selectedMission}/>
+                </div>
+            </div>
         </div>
     )
 }
+
+
