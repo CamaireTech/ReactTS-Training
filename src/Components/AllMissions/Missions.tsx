@@ -7,7 +7,7 @@ export const AllMissions = () =>{
     const {missions,saveMission,deleteMission} = useContext(MissionContext) as MissionContextType
     const [allMissions,setAllMission] = useState<IMissionInterface[]>([])
 
-    const [searchString,setSearchString] = useState<string>(" ")
+    const [searchString,setSearchString] = useState<string>("")
 
     useEffect(()=>{
         setAllMission(missions)
@@ -22,9 +22,9 @@ export const AllMissions = () =>{
         else if (searchString.length > 0){
             setAllMission(
                 missions.filter(mission=>
-                    mission.description.includes(searchString) || 
-                    mission.name.includes(searchString)|| 
-                    mission.members.forEach(mem =>mem.includes(searchString))
+                    mission.description.toLocaleLowerCase().includes(searchString.toLocaleLowerCase()) || 
+                    mission.name.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())|| 
+                    mission.members.forEach(mem =>mem.toLocaleLowerCase().includes(searchString.toLocaleLowerCase()))
                             ) 
             )
         }
@@ -32,7 +32,9 @@ export const AllMissions = () =>{
 
     return (
         <div>
-
+        <div>
+            <input type="text" value={searchString} onChange={e=>setSearchString(e.target.value)}/>
+        </div>
         {allMissions.map((mission,index)=>{
             return(
                 <React.Fragment key={index}>

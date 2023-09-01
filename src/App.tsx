@@ -12,9 +12,9 @@ interface Mission {
 
 function App() {
 
-  const [addMissionModal,setAddModal] = useState<boolean>(false)
-  const [newMission,setNewMission] = useState<Mission | null>(null)
+
   const [modalOpen,setModalOpen] = useState<boolean | undefined>(true)
+  const [selectedMission,setSelectedMission] = useState<number>()
 
   const handleAddMission =()=>{
     document.body.style.height = "fit-content"
