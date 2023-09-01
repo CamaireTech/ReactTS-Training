@@ -5,19 +5,19 @@ export const SingleDetailedMission = ({mission}:{mission:IMissionInterface | nul
 
     if(mission){
         content = 
+            <div className="detailedMissionContainer">
+            <p> <b>Name:</b> {mission.name}</p>
             <div>
-            <p>Name : {mission.name}</p>
-            <div>
-            <p>Description</p>
+            <p><b>Description</b></p>
                 <p>{mission.description}</p>
             </div>
-            <p>Launch Date ; {mission.launchDate}</p>
+            <p><b>Launch Date :</b> {mission.launchDate}</p>
 
             <div>
-                <p>Members</p>
+                <p><b>Members</b></p>
                 {mission.members.map((member,index)=>{
                     return (
-                        <p key={index}>{member}</p>
+                        <p key={index}> - {member}</p>
                     )
                 })}
             </div>

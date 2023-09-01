@@ -68,10 +68,11 @@ div#missionDisplay{
 div.missionListContainer{
     display: flex;
     justify-content: space-between;
-    border: 1px solid blue;
     margin: 10px 0px;
+    min-width: 250px;
     div.missionList{
-        border: 1px solid blue;
+        padding: 0px 10px;
+        min-width: 280px;
     }
 
     div.selectedMissionDetails{
