@@ -1,9 +1,11 @@
-import React,{useState,useRef} from 'react'
+import React,{useState,useRef,useContext} from 'react'
 import './modal.scss'
 import {AiOutlineCloseSquare} from 'react-icons/ai'
 import { Mission } from '../Models/Mission'
 import { v4 as uuidv4 } from 'uuid';
-
+import { MissionContext } from '../Context/MissionContext';
+import { IMissionInterface, MissionContextType } from '../types/Mission';
+import {v4 as uuid} from "uuid"
 
 interface ModalProps {
     isOpen : boolean | undefined
@@ -11,6 +13,9 @@ interface ModalProps {
 }
 
 export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
+
+        //Getting the missions from the Context. Making it available to the Search bar, Modal box, etc
+        const {missions,saveMission,deleteMission} = useContext(MissionContext) as MissionContextType
 
     //Name Launchdate, crew, description
     const crewRef = useRef<HTMLInputElement>(null)
@@ -21,26 +26,25 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
     const [crewAmt,setCrewAmt] = useState<number>(0)
     const [crewMembers,setCrewMembers] = useState<string[]>([])
     const [crewname,setCrewName] = useState<string>("")
-
+    const [test,setTest] = useState()
 //Create a Mission Context !
 
+let theId = uuidv4()
     const handleAddMission = ()=>{
-        let mission = new Mission(
+        let mission:IMissionInterface = new Mission(
+            theId,
             name,
             description,
             crewMembers,
             launchDate
         )
 
-        console.log(mission)
+            saveMission(mission)
     }
+    
+    console.log(missions)
 
 
-    // console.log("Crew Length")
-    // console.log(crewMembers.length)
-    // const setmember = (e:any)=>{
-    //     console.log(e)
-    // }
     const handleAddCrew = (e:any)=>{
         setCrewMembers(prevCrewMembers => [...prevCrewMembers, crewname]);
         setCrewAmt(prev=>prev+=1)
