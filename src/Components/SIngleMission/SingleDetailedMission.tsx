@@ -1,8 +1,8 @@
 
-const SingleDetailedMission = (int:number) =>{
+export const SingleDetailedMission = (int:number) =>{
     return(
         <div>
-            
+
         </div>
     )
 }

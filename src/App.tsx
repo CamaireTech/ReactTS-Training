@@ -30,6 +30,7 @@ function App() {
           <p>Add a mission</p>
         </div>
         <h1>Missions form,buttons , etc</h1>
+        <Modal isOpen ={modalOpen} handleModal={setModalOpen}/>
         {/* Map through the missions here */}
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid iure excepturi optio perspiciatis ipsa. In possimus harum praesentium esse, unde similique eum adipisci nobis blanditiis, facilis ipsum ipsam. Dolorum, odit.</p>
 
@@ -51,7 +52,7 @@ function App() {
       </div>
       <div id='selectedMissionDisplay'>
         <h1>Selected Mission Form</h1>
-        <Modal isOpen ={modalOpen} handleModal={setModalOpen}/>
+        
       </div>
     </div>
   );
