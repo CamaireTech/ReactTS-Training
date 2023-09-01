@@ -26,7 +26,6 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
     const [crewAmt,setCrewAmt] = useState<number>(0)
     const [crewMembers,setCrewMembers] = useState<string[]>([])
     const [crewname,setCrewName] = useState<string>("")
-    const [test,setTest] = useState()
 //Create a Mission Context !
 
 let theId = uuidv4()
@@ -40,6 +39,13 @@ let theId = uuidv4()
         )
 
             saveMission(mission)
+
+            //Resetting input Fileds After Mission Submission
+            setCrewMembers([])
+            setCrewName("")
+            setName("")
+            setDescription("")
+            setCrewAmt(0)
     }
     
     console.log(missions)
@@ -48,17 +54,23 @@ let theId = uuidv4()
     const handleAddCrew = (e:any)=>{
         setCrewMembers(prevCrewMembers => [...prevCrewMembers, crewname]);
         setCrewAmt(prev=>prev+=1)
-        setCrewName(" ")
+        setCrewName("")
+    }
+
+    ///FUnction to make sure all inputs are entered before enabling addMission button
+    let checkInputs =()=>{
+        if(crewMembers.length > 0 && name.length > 0 && description.length > 0 && launchDate){
+            return true
+        }
+        return false
     }
 
 
-
     return(
-        // <div hidden={isOpen} className='modalContainer'>
          <div hidden={false} className='modalContainer'>
             <div className='modal-content'>
                 <div className='modalHeader'>
-                    <p>Form to add a Mission</p>
+                    <h3>Got a new Mission ?</h3>
                     <div onClick={handleModal}>
                     <AiOutlineCloseSquare size={40} />
                     </div>
@@ -94,10 +106,11 @@ let theId = uuidv4()
                     <div>
                 <input ref={crewRef} type='text' value={crewname} onChange={e=>setCrewName(e.target.value)} />
                 <button onClick={handleAddCrew}>Add Crew</button>
+                        {crewMembers.length == 0 && <p className='error'>At list one crew member is required</p>}
             </div>
                     </div>
                 </div>
-            <button onClick={handleAddMission}>Add Mission</button>
+            <button disabled={!checkInputs()} className='bigBtn' onClick={handleAddMission}>Add Mission</button>
             </div>
         </div>
     )

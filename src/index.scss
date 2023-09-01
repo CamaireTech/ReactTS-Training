@@ -5,9 +5,15 @@
 
 p,h1,h2,h3,h4,h5,h6,span,label{
     font-family: 'Poppins', sans-serif;
+    color: #201e21;
 }
 
 div.MainApplication{
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+svg:hover{
+    color: #234E70;
+    cursor: pointer;
+    transition: .7s;
 }
