@@ -3,7 +3,8 @@ import  {AiOutlineMinusSquare} from "react-icons/ai"
 import  {AiOutlinePlusSquare} from "react-icons/ai"
 import  {AiOutlineDelete} from "react-icons/ai"
 import  {FiEdit} from "react-icons/fi"
-import { Modal } from './Components/Modal';
+import { Modal } from './Components/Modal/Modal';
+import { AllMissions } from './Components/AllMissions/Missions';
 
 interface Mission {
   name:string
@@ -38,7 +39,8 @@ function App() {
         </div>  
 
         {/*Here would be the search box for searching and filtering mission*/}
-        <div>
+        <div style={{border:"3px solid red"}}>
+          <AllMissions />
 
         </div>
 

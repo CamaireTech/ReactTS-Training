@@ -17,7 +17,7 @@ export const MissionProvider:React.FC<{children:React.ReactNode}> = ({ children}
 
     const saveMission =(mission:IMissionInterface) =>{
             const newMission:IMissionInterface = {
-                id:uuidv4(),
+                id:mission.id,
                 name:mission.name,
                 description:mission.description,
                 members:mission.members,
@@ -26,7 +26,6 @@ export const MissionProvider:React.FC<{children:React.ReactNode}> = ({ children}
 
            
             setMissions([...missions,newMission])
-            console.log(mission)
     }
 
     const deleteMission = (id:string) =>{
