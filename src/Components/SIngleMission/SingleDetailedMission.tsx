@@ -1,13 +1,14 @@
 import { IMissionInterface } from "../../types/Mission"
+import {MdOutlineDelete} from "react-icons/md"
 
-export const SingleDetailedMission = ({mission}:{mission:IMissionInterface | null}) =>{
+export const SingleDetailedMission = ({mission,deleteMission}:{mission:IMissionInterface | null,deleteMission:any}) =>{
     let content;
 
     if(mission){
         content = 
             <div className="detailedMissionContainer">
             <p> <b>Name:</b> {mission.name}</p>
-            <div>
+            <div style={{maxWidth:"330px"}}>
             <p><b>Description</b></p>
                 <p>{mission.description}</p>
             </div>
@@ -20,6 +21,9 @@ export const SingleDetailedMission = ({mission}:{mission:IMissionInterface | nul
                         <p key={index}> - {member}</p>
                     )
                 })}
+            </div>
+            <div style={{width:"fit-content"}} onClick={()=>deleteMission(mission.id)}>
+                <MdOutlineDelete size={35} color="red"/>
             </div>
         </div>
     }

@@ -17,7 +17,11 @@ export const AllMissions = () =>{
         setAllMission(missions)
     },[missions])
 
-    console.log(missions)
+    const deleteThisMission = (id:string) =>{
+        deleteMission(id)
+        setSelectedMission(null)
+        
+    }
 
     useEffect(()=>{
         if(searchString.length == 0 ){
@@ -54,10 +58,11 @@ export const AllMissions = () =>{
                     </div>
                 )
             })}
+            {allMissions.length == 0 && <h3>Auccun Element trouver</h3>}
             </div>
                 {/* DETAILS OF SELECTED MISSION */}
                 <div className="selectedMissionDetails">
-                    <SingleDetailedMission  mission={selectedMission}/>
+                    <SingleDetailedMission  mission={selectedMission} deleteMission={deleteThisMission} />
                 </div>
             </div>
         </div>

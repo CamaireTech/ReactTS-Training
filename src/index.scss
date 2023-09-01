@@ -27,6 +27,7 @@ div#missionDisplay{
         padding: 10px;
         border: 2px solid #4D8963;
         margin: 10px 0px;
+        cursor: pointer;
 
         &:hover{
             border: 2px solid #69A583;
@@ -75,7 +76,4 @@ div.missionListContainer{
         min-width: 280px;
     }
 
-    div.selectedMissionDetails{
-        
-    }
 }
