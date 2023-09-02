@@ -1,31 +1,26 @@
-import { Children, createContext,useState } from "react";
+import {createContext,useState } from "react";
 import { MissionContextType,IMissionInterface } from "../types/Mission";
 import {v4 as uuidv4} from "uuid"
+import { Mission } from "../Models/Mission";
 
 export const MissionContext = createContext<MissionContextType | null>(null)
 
 export const MissionProvider:React.FC<{children:React.ReactNode}> = ({ children}) =>{
     const [missions,setMissions] = useState<IMissionInterface[]>([
-        {
-            id:uuidv4(),
-            name:"Go to Space",
-            description:"Go to space with the whole Team Just for Fun then Set Fire",
-            launchDate:"22/01/2021",
-            members:["Ojong", "Konno Meli Fuente", "Ambassira Ambassira"]
-        }
+        new Mission(
+            uuidv4(),"Go to Space","Go to space with the whole Team Just for Fun then Set Fire",["Ojong", "Konno Meli Fuente", "Ambassira Ambassira"],"22/01/2021")
     ])
 
     const saveMission =(mission:IMissionInterface) =>{
-            const newMission:IMissionInterface = {
-                id:mission.id,
-                name:mission.name,
-                description:mission.description,
-                members:mission.members,
-                launchDate:mission.launchDate
-            }
-
+        const newLyCreatedMission :IMissionInterface = new Mission(
+            mission.id,
+            mission.name,
+            mission.description,
+            mission.members,
+            mission.launchDate
+            )
            
-            setMissions([...missions,newMission])
+            setMissions([...missions,newLyCreatedMission])
     }
 
     const deleteMission = (id:string) =>{

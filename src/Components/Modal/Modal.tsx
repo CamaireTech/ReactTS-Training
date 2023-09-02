@@ -16,7 +16,7 @@ interface ModalProps {
 export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
 
     //Getting the missions from the Context. Making it available to the Search bar, Modal box, etc
-    const {missions,saveMission,deleteMission} = useContext(MissionContext) as MissionContextType
+    const {saveMission} = useContext(MissionContext) as MissionContextType
 
     //Name Launchdate, crew, description
     const crewRef = useRef<HTMLInputElement>(null)
@@ -48,10 +48,11 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
             setName("")
             setDescription("")
             setCrewAmt(0)
+            setLaunch("")
+            handleModal()
     }
     
-    console.log(missions)
-
+console.log(handleModal)
 
     const handleAddCrew = (e:any)=>{
         setCrewMembers(prevCrewMembers => [...prevCrewMembers, crewname]);
@@ -69,7 +70,6 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
     const deleteCrew =(index:number):MouseEventHandler<SVGElement> | any=>{
        const member = crewMembers[index]
        setCrewMembers(crewMembers.filter(crew=>crew !== member && index== crewMembers.indexOf(member)))
-       console.log(member)
     }
 
 

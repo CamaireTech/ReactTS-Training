@@ -12,9 +12,9 @@ function App() {
 
   const [modalOpen,setModalOpen] = useState<boolean | undefined>(true)
 
-  const handleAddMission =()=>{
-    document.body.style.height = "fit-content"
-    document.body.style.overflow = "hidden"
+
+
+  const handleModalState =()=>{
     setModalOpen(prev=>!prev)
   }
 
@@ -22,11 +22,11 @@ function App() {
     <div className="MainApplication">
       <div id='missionDisplay'>
         <p> Name : <b> Ojong Clinton </b></p>
-        <div className='addMissinContainer' onClick={handleAddMission}>
+        <div className='addMissinContainer' onClick={handleModalState}>
           <AiOutlinePlusSquare size={40} />
           <p>Add a mission</p>
         </div>
-        <Modal isOpen ={modalOpen} handleModal={setModalOpen}/>
+        <Modal isOpen ={modalOpen} handleModal={handleModalState}/>
         {/*Here would be the search box for searching and filtering mission*/}
         <div className='missionsContainer'>
           <AllMissions />
