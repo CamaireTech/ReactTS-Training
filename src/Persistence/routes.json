@@ -1,0 +1,6 @@
+{
+    "/missions": "/missions",
+    "/missions/create": "/missions",
+    "/missions/delete/:id": "/missions/:id"
+}
+  

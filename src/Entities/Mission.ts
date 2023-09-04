@@ -1,7 +1,10 @@
 export interface Mission {
-  id: number;
+  id: string;
   name: string;
   launchDate: string;
   crew: string[];
   description: string;
+  state: number;
+  createdAt: string;
+  updatedAt: string;
 }

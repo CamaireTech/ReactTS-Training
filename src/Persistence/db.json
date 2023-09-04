@@ -1,0 +1,150 @@
+{
+  "missions": [
+    {
+      "id": "e7d44b11-8d97-4bbd-9457-7c014b3af6a1",
+      "name": "Apollo 11",
+      "launchDate": "1969-07-16",
+      "crew": [
+        "Neil Armstrong",
+        "Buzz Aldrin",
+        "Michael Collins"
+      ],
+      "description": "First manned mission to land on the Moon",
+      "state": "1",
+      "createdAt": "2023-08-01T12:00:00.000Z",
+      "updatedAt": "2023-08-01T12:00:00.000Z"
+    },
+    {
+      "id": "f45d2e9d-2b50-4d04-9a2f-96d01f650a67",
+      "name": "Voyager 1",
+      "launchDate": "1977-09-05",
+      "crew": [
+        "None"
+      ],
+      "description": "Interstellar probe launched by NASA",
+      "state": "1",
+      "createdAt": "2023-08-02T12:00:00.000Z",
+      "updatedAt": "2023-08-02T12:00:00.000Z"
+    },
+    {
+      "id": "a2b3c2a1-3b4c-4d5e-6f7g-8h9i0j1k2l3",
+      "name": "Hubble Space Telescope",
+      "launchDate": "1990-04-24",
+      "crew": [
+        "None"
+      ],
+      "description": "Space telescope in low Earth orbit",
+      "state": "1",
+      "createdAt": "2023-08-03T12:00:00.000Z",
+      "updatedAt": "2023-08-03T12:00:00.000Z"
+    },
+    {
+      "id": "b9e8f7d6-c5b4a3e2-1",
+      "name": "Curiosity Rover",
+      "launchDate": "2011-11-26",
+      "crew": [
+        "None"
+      ],
+      "description": "NASA's car-sized rover exploring Mars",
+      "state": "1",
+      "createdAt": "2023-08-04T12:00:00.000Z",
+      "updatedAt": "2023-08-04T12:00:00.000Z"
+    },
+    {
+      "id": "1a2b3c4d-5e6f-7g8h-9i0j1k2l3m4n5",
+      "name": "International Space Station (ISS)",
+      "launchDate": "1998-11-20",
+      "crew": [
+        "Multiple astronauts from various countries"
+      ],
+      "description": "Habitat and laboratory for astronauts in orbit",
+      "state": 0,
+      "createdAt": "2023-08-05T12:00:00.000Z",
+      "updatedAt": "2023-08-05T12:00:00.000Z"
+    },
+    {
+      "id": "3b4c5d6e-7f8g-9h0i-1j2k3l4m5n6o7",
+      "name": "Mars Science Laboratory",
+      "launchDate": "2011-11-26",
+      "crew": [
+        "None"
+      ],
+      "description": "NASA rover mission to Mars",
+      "state": "1",
+      "createdAt": "2023-08-06T12:00:00.000Z",
+      "updatedAt": "2023-08-06T12:00:00.000Z"
+    },
+    {
+      "id": "1a2b3c4d-5e6f-7g8h-9i0j1k2l3m4n5o6p7",
+      "name": "New Horizons",
+      "launchDate": "2006-01-19",
+      "crew": [
+        "None"
+      ],
+      "description": "NASA probe to study Pluto and the Kuiper Belt",
+      "state": "1",
+      "createdAt": "2023-08-07T12:00:00.000Z",
+      "updatedAt": "2023-08-07T12:00:00.000Z"
+    },
+    {
+      "id": "1b2a3c4k-5f6h-7n8m-9o0i1j2l3",
+      "name": "Hubble Space Telescope 2",
+      "launchDate": "2022-12-25",
+      "crew": [
+        "None"
+      ],
+      "description": "A successor to the original Hubble Space Telescope",
+      "state": "1",
+      "createdAt": "2023-08-08T12:00:00.000Z",
+      "updatedAt": "2023-08-08T12:00:00.000Z"
+    },
+    {
+      "id": "0a1b2c3d-4e5f-6g7h-8i9j0k1l2m3n4o5",
+      "name": "Perseverance Rover",
+      "launchDate": "2020-07-30",
+      "crew": [
+        "None"
+      ],
+      "description": "NASA's rover mission to explore Mars",
+      "state": 0,
+      "createdAt": "2023-08-09T12:00:00.000Z",
+      "updatedAt": "2023-08-09T12:00:00.000Z"
+    },
+    {
+      "id": "CDO1xqH",
+      "name": "test",
+      "launchDate": "2023-09-22",
+      "crew": [
+        "ryan"
+      ],
+      "description": "this is a test",
+      "state": 0,
+      "createdAt": "2023-09-04T16:42:25.268Z",
+      "updatedAt": "2023-09-04T16:42:25.268Z"
+    },
+    {
+      "id": "RbwiOrA",
+      "name": "ambassira",
+      "launchDate": "2023-09-16",
+      "crew": [
+        "rton"
+      ],
+      "description": "nijnijn",
+      "state": 1,
+      "createdAt": "2023-09-04T16:54:34.119Z",
+      "updatedAt": "2023-09-04T16:54:34.119Z"
+    },
+    {
+      "id": "frc8TwZ",
+      "name": "root",
+      "launchDate": "2023-09-23",
+      "crew": [
+        "hijoio"
+      ],
+      "description": "jniohiohnui",
+      "state": 1,
+      "createdAt": "2023-09-04T17:04:04.095Z",
+      "updatedAt": "2023-09-04T17:04:04.095Z"
+    }
+  ]
+}
