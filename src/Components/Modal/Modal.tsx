@@ -30,7 +30,7 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
 
     //UUID of newly created Mission
     let theId = uuidv4()
-    const handleAddMission = ()=>{
+    const handleAddMission = async()=>{
         let mission:IMissionInterface = new Mission(
             theId,
             name,
@@ -50,8 +50,6 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
             setLaunch("")
             handleModal()
     }
-    
-console.log(handleModal)
 
     const handleAddCrew = (e:any)=>{
         setCrewMembers(prevCrewMembers => [...prevCrewMembers, crewname]);

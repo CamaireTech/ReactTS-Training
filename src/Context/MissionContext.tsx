@@ -29,7 +29,7 @@ export const MissionProvider:React.FC<{children:React.ReactNode}> = ({ children}
 
 
 
-    const saveMission =(mission:IMissionInterface) =>{
+    const saveMission =async (mission:IMissionInterface) =>{
         const newLyCreatedMission :IMissionInterface = new Mission(
             mission.id,
             mission.name,
@@ -39,7 +39,7 @@ export const MissionProvider:React.FC<{children:React.ReactNode}> = ({ children}
             )
             
             //Saving Mission to database
-            axios.post("http://localhost:3031/missions",newLyCreatedMission).then(function(res:AxiosResponse){
+            await axios.post("http://localhost:3031/missions",newLyCreatedMission).then(function(res:AxiosResponse){
                 toast.success("Mission sucessfully created !", {
                     position: toast.POSITION.TOP_CENTER
                   });
@@ -48,23 +48,30 @@ export const MissionProvider:React.FC<{children:React.ReactNode}> = ({ children}
                 toast.error("Error while inserting Mission", {
                     position: toast.POSITION.TOP_CENTER
                   });
+                  console.log(err)
             })
     }
 
     //Deleting single Mission
-    const deleteMission = (id:string) =>{
+    const deleteMission = async (id:string) =>{
         const theMission = missions.find(singleMission => singleMission.id === id)
-        if(theMission){
-            setMissions(missions.filter(mission=>mission.id !== theMission?.id))
-        }
-        axios.delete(`http://localhost:3031/missions/${id}`).then(function(res:AxiosResponse){
+
+        await axios.delete(`http://localhost:3031/missions/${id}`).then(function(res:AxiosResponse){
             toast.success("Mission sucessfully Deleted !", {
                 position: toast.POSITION.TOP_CENTER
               });
+              if(theMission){
+                setMissions(missions.filter(mission=>mission.id !== theMission?.id))
+            }else{
+                toast.error("Mission Not found", {
+                    position: toast.POSITION.TOP_CENTER
+                  });
+            }
         }).catch(function(err:any){
             toast.error("Error while Deleting Mission", {
                 position: toast.POSITION.TOP_CENTER
               });
+              console.log(err)
         })
     }
 
