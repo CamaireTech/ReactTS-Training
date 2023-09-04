@@ -7,7 +7,7 @@ import {BsSearch} from "react-icons/bs"
 
 export const AllMissions = () =>{
 
-    const {missions,saveMission,deleteMission} = useContext(MissionContext) as MissionContextType
+    const {missions,deleteMission} = useContext(MissionContext) as MissionContextType
     const [allMissions,setAllMission] = useState<IMissionInterface[]>([])
 
     const [searchString,setSearchString] = useState<string>("")
@@ -58,7 +58,7 @@ export const AllMissions = () =>{
                     </div>
                 )
             })}
-            {allMissions.length == 0 && <h3>Auccun Element trouver</h3>}
+            {allMissions.length === 0 && <h3>Auccun Element trouver</h3>}
             </div>
                 {/* DETAILS OF SELECTED MISSION */}
                 <div className="selectedMissionDetails">
