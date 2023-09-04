@@ -24,7 +24,7 @@ export const AllMissions = () =>{
     }
 
     useEffect(()=>{
-        if(searchString.length == 0 ){
+        if(searchString.length === 0 ){
             //In case of no searchString, reset Missions Array
             setAllMission(missions)
         }
@@ -36,7 +36,7 @@ export const AllMissions = () =>{
                     mission.name.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) 
             )
         }
-    },[searchString])
+    },[searchString,missions])
 
     return (
         <div>

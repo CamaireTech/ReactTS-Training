@@ -26,19 +26,13 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
     const [crewAmt,setCrewAmt] = useState<number>(0)
     const [crewMembers,setCrewMembers] = useState<string[]>([])
     const [crewname,setCrewName] = useState<string>("")
-//Create a Mission Context !
 
     //UUID of newly created Mission
     let theId = uuidv4()
     const handleAddMission = async()=>{
-        let mission:IMissionInterface = new Mission(
-            theId,
-            name,
-            description,
-            crewMembers,
-            launchDate
-        )
+        let mission:IMissionInterface = new Mission(theId,name,description,crewMembers,launchDate)
 
+            //Save mission to database
             saveMission(mission)
 
             //Resetting input Fileds After Mission Submission
@@ -57,7 +51,7 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
         setCrewName("")
     }
 
-    ///FUnction to make sure all inputs are entered before enabling addMission button
+    //Function to make sure all inputs are entered before enabling addMission button
     let checkInputs =()=>{
         if(crewMembers.length > 0 && name.length > 0 && description.length > 0 && launchDate){
             return true
@@ -72,7 +66,7 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
 
     return(
     <div hidden={isOpen} className='modalContainer'>
-        <div className='modal-content'>
+        <form className='modal-content'>
             <div className='modalHeader'>
                 <h3>Got a new Mission ?</h3>
                 <div onClick={handleModal}>
@@ -83,6 +77,7 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
                 <p>Mission Name</p>
                 <div>
                         <input 
+                            required
                             type="text" 
                             value={name} 
                             onChange={(e)=>setName(e.target.value)} 
@@ -91,7 +86,8 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
                 </div>
                 <div>
                     <p>Mission description</p>
-                    <textarea 
+                    <textarea
+                        required
                         value={description} 
                         onChange={(e)=>setDescription(e.target.value)} 
                         className='input' 
@@ -118,6 +114,7 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
                 <div>
                     <div>
                         <input 
+                            required
                             ref={crewRef} 
                             type='text' 
                             value={crewname} 
@@ -128,7 +125,7 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
                 </div>
             </div>
             <button disabled={!checkInputs()} className='bigBtn' onClick={handleAddMission}>Add Mission</button>
-        </div>
+        </form>
     </div>
     )
 }
