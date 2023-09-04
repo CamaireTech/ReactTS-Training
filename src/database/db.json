@@ -1,0 +1,15 @@
+{
+  "missions": [
+    {
+      "id": "2ce52ce2-c072-4a7c-91ee-923e9c483396",
+      "name": "Go to space",
+      "description": "Go to space with the whole Team Just for Fun then Set Fire",
+      "members": [
+        "Ojong Clinton",
+        "Fuente",
+        "Ambasira "
+      ],
+      "launchDate": "2023-09-22"
+    }
+  ]
+}

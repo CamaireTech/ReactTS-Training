@@ -5,7 +5,6 @@ import { Mission } from '../../Models/Mission'
 import { v4 as uuidv4 } from 'uuid';
 import { MissionContext } from '../../Context/MissionContext';
 import { IMissionInterface, MissionContextType } from '../../types/Mission';
-import {v4 as uuid} from "uuid"
 import {TiDeleteOutline} from "react-icons/ti"
 
 interface ModalProps {
@@ -69,7 +68,7 @@ console.log(handleModal)
     }
     const deleteCrew =(index:number):MouseEventHandler<SVGElement> | any=>{
        const member = crewMembers[index]
-       setCrewMembers(crewMembers.filter(crew=>crew !== member && index== crewMembers.indexOf(member)))
+       setCrewMembers(crewMembers.filter(crew=>crew !== member && index=== crewMembers.indexOf(member)))
     }
 
 
@@ -126,7 +125,7 @@ console.log(handleModal)
                             value={crewname} 
                             onChange={e=>setCrewName(e.target.value)} />
                         <button disabled={crewname.length == 0} onClick={handleAddCrew}>Add Crew</button>
-                        {crewMembers.length == 0 && <p className='error'>At list one crew member is required</p>}
+                        {crewMembers.length === 0 && <p className='error'>At list one crew member is required</p>}
                     </div>
                 </div>
             </div>
