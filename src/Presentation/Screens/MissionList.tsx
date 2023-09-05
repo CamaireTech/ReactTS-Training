@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import useMissionManagement from '../../Logic/useMissionManagement';
 import Button from '../../Presentation/Components/Button';
 import { useSearchByName } from '../../Logic/useSearchByName';
+import { useMissionContext } from '../../Logic/Contexte/MissionContext';
 
 const MissionList: React.FC = () => {
-  const { removeMission } = useMissionManagement();
+  const { removeMission, missions } = useMissionContext();
 
   const { searchResults, searchTerm, handleSearch } = useSearchByName();
 

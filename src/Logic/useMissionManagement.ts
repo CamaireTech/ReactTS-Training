@@ -1,4 +1,4 @@
-
+// useMissionManagement.ts
 import { useEffect, useState } from 'react';
 import { Mission } from '../Entities/Mission';
 import { readMissions, createMission, updateMission, deleteMission } from '../Infrastructure/Services';
@@ -13,7 +13,6 @@ const useMissionManagement = () => {
   const addMission = async (mission: Mission) => {
     try {
       await createMission(mission);
-      alert("Mission added succesfully");
       await loadMissions();
     } catch (error) {
       console.error('Error creating mission:', error);

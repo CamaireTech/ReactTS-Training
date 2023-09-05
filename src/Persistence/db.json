@@ -145,6 +145,26 @@
       "state": 0,
       "createdAt": "2023-09-04T17:04:04.095Z",
       "updatedAt": "2023-09-04T17:04:04.095Z"
+    },
+    {
+      "id": "XyeQYQe",
+      "name": "Craig Ambassira",
+      "launchDate": "2023-09-28",
+      "crew": [],
+      "description": "this is a test",
+      "state": 0,
+      "createdAt": "2023-09-05T10:02:48.225Z",
+      "updatedAt": "2023-09-05T10:02:48.225Z"
+    },
+    {
+      "id": "FMuiv0d",
+      "name": "test",
+      "launchDate": "2023-09-28",
+      "crew": [],
+      "description": "test",
+      "state": 1,
+      "createdAt": "2023-09-05T11:29:36.083Z",
+      "updatedAt": "2023-09-05T11:29:36.083Z"
     }
   ]
 }
