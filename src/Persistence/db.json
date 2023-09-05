@@ -10,7 +10,7 @@
         "Michael Collins"
       ],
       "description": "First manned mission to land on the Moon",
-      "state": "1",
+      "state": 0,
       "createdAt": "2023-08-01T12:00:00.000Z",
       "updatedAt": "2023-08-01T12:00:00.000Z"
     },
@@ -106,7 +106,7 @@
         "None"
       ],
       "description": "NASA's rover mission to explore Mars",
-      "state": 0,
+      "state": 1,
       "createdAt": "2023-08-09T12:00:00.000Z",
       "updatedAt": "2023-08-09T12:00:00.000Z"
     },
@@ -118,7 +118,7 @@
         "ryan"
       ],
       "description": "this is a test",
-      "state": 0,
+      "state": 1,
       "createdAt": "2023-09-04T16:42:25.268Z",
       "updatedAt": "2023-09-04T16:42:25.268Z"
     },
@@ -142,7 +142,7 @@
         "hijoio"
       ],
       "description": "jniohiohnui",
-      "state": 1,
+      "state": 0,
       "createdAt": "2023-09-04T17:04:04.095Z",
       "updatedAt": "2023-09-04T17:04:04.095Z"
     }

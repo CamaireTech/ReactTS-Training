@@ -1,30 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import useMissionManagement from '../../Logic/useMissionManagement';
 import Button from '../../Presentation/Components/Button';
-import { useMissionContext } from '../../Logic/Contexte/MissionContext';
-import { Mission } from '../../Entities/Mission';
+import { useSearchByName } from '../../Logic/useSearchByName';
 
 const MissionList: React.FC = () => {
   const { removeMission } = useMissionManagement();
-  const { missions } = useMissionContext();
 
-  const [searchResults, setSearchResults] = useState<Mission[]>(missions);
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const { searchResults, searchTerm, handleSearch } = useSearchByName();
 
-  const handleSearch = (searchTerm: string) => {
-    setSearchTerm(searchTerm);
-
-    if (searchTerm === '') {
-      setSearchResults(missions);
-    } else {
-      // Perform the search logic here and update searchResults
-      const filteredMissions = missions.filter((mission) =>
-        mission.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-
-      setSearchResults(filteredMissions);
-    }
-  };
+  useEffect(() => {
+    handleSearch('');
+  }, );
 
   const handleDeleteClick = (missionId: string) => {
     const confirmDelete = window.confirm('Are you sure you want to delete this mission?');
@@ -32,7 +18,6 @@ const MissionList: React.FC = () => {
     if (confirmDelete) {
       removeMission(missionId)
         .then(() => {
-          setSearchResults((prevResults) => prevResults.filter((mission) => mission.id !== missionId));
           alert('Mission deleted successfully');
         })
         .catch((error) => {
@@ -44,7 +29,7 @@ const MissionList: React.FC = () => {
   return (
     <div className="my-4">
       <input
-        className="border rounded-lg p-2 w-full"
+        className="border rounded-lg p-2 w-full mb-5"
         type="text"
         placeholder="Rechercher par nom de mission"
         value={searchTerm}
@@ -72,7 +57,7 @@ const MissionList: React.FC = () => {
             </li>
           ))}
         </ul>
-      ) : (
+       ) : (
         searchTerm.trim() !== '' && <p>No missions found for "{searchTerm}".</p>
       )}
     </div>

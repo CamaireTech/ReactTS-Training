@@ -1,68 +1,143 @@
-// useFormVerification.ts
+import { useState, useRef } from 'react';
+import { Mission } from '../Entities/Mission';
+import useMissionManagement  from './useMissionManagement';
 
-import { useState } from 'react';
+interface FormErrors {
+  name: string | null;
+  launchDate: string | null;
+  crew: string | null;
+  description: string | null;
+}
 
-const useFormVerification = () => {
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+export function useFormValidation(closePopIn: () => void) {
+  const { addMission } = useMissionManagement();
+  const [values, setValues] = useState({
 
-  const validateName = (name: string) => {
-    if (!name.trim()) {
-      return 'Name is required.';
+    name: '',
+    launchDate: '',
+    crew: '',
+    description: '',
+  });
+
+  const [errors, setErrors] = useState<FormErrors>({
+    name: null,
+    launchDate: null,
+    crew: null,
+    description: null,
+  });
+
+  const crewInputRef = useRef<HTMLInputElement | null>(null);
+  const nameInputRef = useRef<HTMLInputElement | null>(null);
+  const launchDateInputRef = useRef<HTMLInputElement | null>(null);
+  const descriptionInputRef = useRef<HTMLInputElement | null>(null);
+
+  const crewBuffer = useRef<string[]>([]);
+
+  const updateFormField = (name: string, value: string) => {
+    if (name === 'name') {
+      const nameError = value.match(/^\d+$/) ? 'Name cannot be a number' : null;
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        name: nameError,
+      }));
+    } else if (name === 'launchDate') {
+      const currentDate = new Date();
+      const selectedDate = new Date(value);
+      const launchDateError =
+        isNaN(selectedDate.getTime()) || selectedDate <= currentDate
+          ? 'Launch date must be a valid date and should not be earlier than today.'
+          : null;
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        launchDate: launchDateError,
+      }));
+    } else if (name === 'crew') {
+      const crewError =
+        value.trim() === '' || value.match(/^\d+$/) ? 'Crew member must be a valid string.' : null;
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        crew: crewError,
+      }));
     }
-    if (!/^[a-zA-Z\s]+$/.test(name)) {
-      return 'Name should only contain letters and spaces.';
-    }
-    return '';
+
+    setValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
   };
 
-  const validateDate = (date: string) => {
-    const selectedDate = new Date(date);
-    if (isNaN(selectedDate.getTime())) {
-      return 'Invalid date format.';
+  const validateAndAddCrewMember = () => {
+    if (!errors.crew && values.crew.trim() !== '') {
+      crewBuffer.current.push(values.crew);
+      setValues((prevValues) => ({
+        ...prevValues,
+        crew: '',
+      }));
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        crew: null,
+      }));
+      if (crewInputRef.current) {
+        crewInputRef.current.focus();
+      }
     }
-    const currentDate = new Date();
-    if (selectedDate < currentDate) {
-      return 'Date cannot be in the past.';
-    }
-    return '';
   };
 
-  const validateCrew = (crew: string) => {
-    if (!crew.trim()) {
-      return 'Crew member name is required.';
-    }
-    if (!/^[a-zA-Z\s]+$/.test(crew)) {
-      return 'Crew member name should only contain letters and spaces.';
-    }
-    return '';
+  const removeCrewMember = (index: number) => {
+    crewBuffer.current.splice(index, 1);
   };
 
-  const validateForm = (values: { name: string; lunchDate: string; crew: string }) => {
-    const newErrors: { [key: string]: string } = {};
+  const isFormValid = () => {
+    return !Object.values(errors).some((error) => error !== null);
+  };
 
-    const nameError = validateName(values.name);
-    if (nameError) {
-      newErrors.name = nameError;
-    }
+  const clearForm = () => {
+    setValues({
+      name: '',
+      launchDate: '',
+      crew: '',
+      description: '',
+    });
+    setErrors({
+      name: null,
+      launchDate: null,
+      crew: null,
+      description: null,
+    });
+    crewBuffer.current = [];
+  };
 
-    const dateError = validateDate(values.lunchDate);
-    if (dateError) {
-      newErrors.lunchDate = dateError;
-    }
+  const handleSubmit = () => {
+      const newMission: Mission = {
+        id: '',
+        name: values.name,
+        launchDate: values.launchDate,
+        crew: crewBuffer.current,
+        description: values.description,
+        state: 1,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      };
 
-    const crewError = validateCrew(values.crew);
-    if (crewError) {
-      newErrors.crew = crewError;
-    }
+      addMission(newMission);
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+      clearForm();
+      closePopIn();
   };
 
   return {
+    values,
     errors,
-    validateForm,
+    updateFormField,
+    validateAndAddCrewMember,
+    removeCrewMember,
+    isFormValid,
+    clearForm,
+    crewBuffer: crewBuffer.current,
+    nameInputRef,
+    launchDateInputRef,
+    crewInputRef,
+    descriptionInputRef,
+    handleSubmit,
   };
-};
-
-export default useFormVerification;
+}

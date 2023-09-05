@@ -1,7 +1,7 @@
+
 import { useEffect, useState } from 'react';
 import { Mission } from '../Entities/Mission';
-import { readMissionsByState, createMission, updateMission, deleteMission } from '../Infrastructure/Services';
-import { server } from 'typescript';
+import { readMissions, createMission, updateMission, deleteMission } from '../Infrastructure/Services';
 
 const useMissionManagement = () => {
   const [missions, setMissions] = useState<Mission[]>([]);
@@ -10,22 +10,12 @@ const useMissionManagement = () => {
     loadMissions();
   }, []);
 
-  const loadMissions = async () => {
-    try {
-      const missionData = await readMissionsByState();
-      setMissions(missionData);
-    } catch (error) {
-      // Handle errors
-      console.error('Error loading missions:', error);
-    }
-  };
-
   const addMission = async (mission: Mission) => {
     try {
       await createMission(mission);
-      loadMissions();
+      alert("Mission added succesfully");
+      await loadMissions();
     } catch (error) {
-      // Handle errors
       console.error('Error creating mission:', error);
     }
   };
@@ -33,9 +23,8 @@ const useMissionManagement = () => {
   const editMission = async (mission: Mission) => {
     try {
       await updateMission(mission);
-      loadMissions();
+      await loadMissions();
     } catch (error) {
-      // Handle errors
       console.error('Error updating mission:', error);
     }
   };
@@ -43,10 +32,18 @@ const useMissionManagement = () => {
   const removeMission = async (missionId: string) => {
     try {
       await deleteMission(missionId);
-      loadMissions();
+      await loadMissions();
     } catch (error) {
-      // Handle errors
       console.error('Error deleting mission:', error);
+    }
+  };
+
+  const loadMissions = async () => {
+    try {
+      const missionData = await readMissions();
+      setMissions(missionData);
+    } catch (error) {
+      console.error('Error loading missions:', error);
     }
   };
 

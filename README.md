@@ -1,14 +1,14 @@
-# Mission Control App
+# Mission Management App
 
-Welcome to the Mission Control App! This React and TypeScript project allows users to manage space missions.
+The Mission Management App is a web application for tracking and managing space missions.
 
 ## Table of Contents
-
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Running the App](#running-the-app)
 - [Project Structure](#project-structure)
+- [Running the App](#running-the-app)
+- [JSON Server Setup](#json-server-setup)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
@@ -18,67 +18,84 @@ Welcome to the Mission Control App! This React and TypeScript project allows use
 ### Prerequisites
 
 Before you begin, ensure you have met the following requirements:
-
 - Node.js and npm installed on your machine.
-- Git installed on your machine.
-- GitHub Desktop installed for easier version control.
+- Git (optional, for version control).
 
 ### Installation
 
-1. Clone the repository to your local machine using GitHub Desktop or by running the following command in your terminal:
-
-   ```bash
-   git clone https://github.com/theaarc/spatiales-mission-controller.git
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/mission-management-app.git
    ```
 
-2. Navigate to the project directory:
-
-   ```bash
-   cd mission-control-app
+2. Change to the project directory:
+   ```sh
+   cd mission-management-app
    ```
 
-3. Install the project dependencies:
-
-   ```bash
+3. Install project dependencies:
+   ```sh
    npm install
    ```
 
+## Project Structure
+
+The project is structured as follows:
+
+- `src/`: Contains the source code for the web application.
+  - `Entities/`: Defines TypeScript interfaces for mission-related data.
+  - `Infrastructure/`: Contains services for data operations (e.g., CRUD operations).
+  - `Logic/`: Houses custom hooks and context for state management.
+  - `Presentation/`: Includes React components and screens.
+  - `App.tsx`: Main application entry point.
+- `json-server/`: Contains configuration for the JSON server used to simulate a backend.
+- `public/`: Static assets and HTML template.
+
 ## Running the App
 
-To run the app locally, use the following command:
+To start the development server and run the app:
 
-```bash
+```sh
 npm start
 ```
 
-This will start the development server, and you can view the app in your web browser at [http://localhost:3000](http://localhost:3000).
+The app will be available at `http://localhost:3000/`.
 
-## Project Structure
+## JSON Server Setup
 
-The project is organized as follows:
+The app uses JSON Server to simulate a backend for mission data. To start the JSON Server:
 
-- `src/`: Contains the source code for the React components and Redux setup.
-  - `components/`: Contains React components.
-  - `redux/`: Contains Redux reducers, actions, and store configuration.
-  - `utiles/`: Contains reusable components such as Datepickers.
-  - `Models/`: Contains Models for the good implementation such as Mission model.
-- `public/`: Contains static assets and the HTML template.
+1. Change to the `json-server/` directory:
+   ```sh
+   cd json-server
+   ```
+
+2. Install JSON Server globally (if not already installed):
+   ```sh
+   npm install -g json-server
+   ```
+
+3. Start JSON Server:
+   ```sh
+   json-server --watch db.json --port 4000
+   ```
+
+The JSON Server will run at `http://localhost:4000/` and provide endpoints for mission data.
 
 ## Usage
 
-- The app allows you to manage space missions, add new missions, delete missions, and search for missions by name.
+- Add, edit, and delete missions.
+- Search for missions by name.
+- View a list of missions.
+- Simulated mission data is provided by the JSON Server.
 
 ## Contributing
 
-Contributions are welcome! If you would like to contribute to this project, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them.
-4. Push your changes to your forked repository.
-5. Create a pull request to the original repository.
+Contributions are welcome! Feel free to open issues or pull requests for any improvements or bug fixes.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 ```
+
+Make sure to replace placeholders like `https://github.com/your-username/mission-management-app.git` with the actual URL of your repository and customize any other details to match your project's structure and requirements.

@@ -1,30 +1,16 @@
 import axios from 'axios';
 import { Mission } from '../Entities/Mission';
 
-const API_BASE_URL = 'http://localhost:3032'; // Update with your JSON server URL
+const API_BASE_URL = 'http://localhost:3032';
 
-// Function to get the resource URL from routes.json
 const getResourceUrl = (route: string) => {
   const routes = require('../Persistence/routes.json');
   return routes[route];
 };
 
-export const readMissionsByState = async (state: number = 1): Promise<Mission[]> => {
-  try {
-    const route = '/missions';
-    const resourceUrl = getResourceUrl(route);
-    const response = await axios.get(`${API_BASE_URL}${resourceUrl}`, {
-      params: { state }, // Include the state as a query parameter
-    });
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
 export const createMission = async (mission: Mission): Promise<Mission> => {
   try {
-    const route = '/missions/create'; // Define your route
+    const route = '/missions/create';
     const resourceUrl = getResourceUrl(route);
     const response = await axios.post(`${API_BASE_URL}${resourceUrl}`, mission);
     return response.data;
@@ -35,14 +21,17 @@ export const createMission = async (mission: Mission): Promise<Mission> => {
 
 export const readMissions = async (): Promise<Mission[]> => {
   try {
-    const route = '/missions'; // Define your route
+    const route = '/missions';
     const resourceUrl = getResourceUrl(route);
-    const response = await axios.get(`${API_BASE_URL}${resourceUrl}`);
+
+    const response = await axios.get(`${API_BASE_URL}${resourceUrl}?state=1`);
+
     return response.data;
   } catch (error) {
     throw error;
   }
 };
+
 
 export const updateMission = async (mission: Mission): Promise<Mission> => {
   try {
@@ -57,7 +46,7 @@ export const updateMission = async (mission: Mission): Promise<Mission> => {
 
 export const deleteMission = async (missionId: string): Promise<void> => {
   try {
-    const route = `/missions/delete/:id`; // Define your route
+    const route = `/missions/delete/:id`;
     const resourceUrl = getResourceUrl(route);
     const response = await axios.patch(`${API_BASE_URL}${resourceUrl.replace(':id', missionId)}`, { state: 0 });
     return response.data;
@@ -71,5 +60,4 @@ export default {
   readMissions,
   updateMission,
   deleteMission,
-  readMissionsByState,
 };
