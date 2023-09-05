@@ -10,7 +10,7 @@ const MissionList: React.FC = () => {
 
   useEffect(() => {
     handleSearch('');
-  }, );
+  }, []);
 
   const handleDeleteClick = (missionId: string) => {
     const confirmDelete = window.confirm('Are you sure you want to delete this mission?');
