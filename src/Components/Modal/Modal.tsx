@@ -1,11 +1,11 @@
 import React,{useState,useRef,useContext, MouseEventHandler} from 'react'
-import './modal.scss'
 import {AiOutlineCloseSquare} from 'react-icons/ai'
 import { Mission } from '../../Models/Mission'
 import { v4 as uuidv4 } from 'uuid';
 import { MissionContext } from '../../Context/MissionContext';
 import { IMissionInterface, MissionContextType } from '../../types/Mission';
 import {TiDeleteOutline} from "react-icons/ti"
+import { checkFields } from '../../Utils/verifyInput';
 
 interface ModalProps {
     isOpen : boolean | undefined
@@ -31,8 +31,17 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
     let theId = uuidv4()
     const handleAddMission = async()=>{
         let mission:IMissionInterface = new Mission(theId,name,description,crewMembers,launchDate)
-
-            //Save mission to database
+        //Validating fields a second time
+            if(
+                checkFields([
+                {name:'name',data:name},
+                {name:'launchDate',data:launchDate},
+                {name:'description',data:description},
+                {name:'crew Members',data:crewMembers}
+             ])
+             
+             ){
+                            //Save mission to database
             saveMission(mission)
 
             //Resetting input Fileds After Mission Submission
@@ -43,6 +52,10 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
             setCrewAmt(0)
             setLaunch("")
             handleModal()
+             }else{
+                
+             }
+
     }
 
     const handleAddCrew = (e:any)=>{
@@ -92,7 +105,6 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
                         onChange={(e)=>setDescription(e.target.value)} 
                         className='input' 
                         name="desc" 
-                        id="" 
                         cols={30} 
                         rows={10}
                         placeholder='Mission Objectives'></textarea>

@@ -8,12 +8,26 @@ In the project directory, you must first run the following in order:
 
 ### - `npm install`
 
+This is to install all required dependencies for proper running and functioning of website.
+
+Npm may warn you about versioning issues but for the momment this can be ignored.
+
+### - `npm install -g json-server`
+
+This is also required to be able to save data(different mission) using axios to local json file since no storage such as MySql , MongoDb , etc is being used
+
 ### - `json-server --watch src/database/db.json --port 3031`
+! Open a new teminal before typing in this command as you would be unable to use this terminal unless you terminate the process using `Ctrl + c`
+
+Command for launching local server and enabling saving og user missions for future referencing.
+LocalStorage could also be used but once the user closes the browser, clear his/her cookies, clear browser cache all the data (missions) would be lost
+
 ### - `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) (May differ if port 3000 is already busy) to view it in the browser.
 
+At this point , if all was succesful , your app should be up and running !
 
 
 

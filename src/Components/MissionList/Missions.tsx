@@ -3,7 +3,8 @@ import { MissionContext } from "../../Context/MissionContext"
 import { IMissionInterface, MissionContextType } from "../../types/Mission"
 import { SingleMission } from "../SIngleMission/SingleSummaryMission"
 import { SingleDetailedMission } from "../SIngleMission/SingleDetailedMission"
-import {BsSearch} from "react-icons/bs"
+import { SearchMissions } from "../SearchMissions/SearchMission"
+
 
 export const AllMissions = () =>{
 
@@ -40,13 +41,10 @@ export const AllMissions = () =>{
 
     return (
         <div>
-        <div className="inputContainer">
-            <BsSearch color="white" size={20} />
-            <input type="text" 
-            placeholder="Search for a mission"
-            value={searchString} 
-            onChange={e=>setSearchString(e.target.value)}/>
-        </div>
+            <SearchMissions 
+                searchString={searchString} 
+                setSearchString={setSearchString}
+                />
 
         {/* LIST OF ALL MISSIONS  */}
         <div className="missionListContainer">

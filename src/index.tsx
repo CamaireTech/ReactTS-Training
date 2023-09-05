@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import './index.scss'
+import './Styles/index.scss'
+import './Styles/modal.scss'
+import './Styles/singleMission.scss'
 import { MissionProvider } from './Context/MissionContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
