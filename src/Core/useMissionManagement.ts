@@ -1,4 +1,3 @@
-// useMissionManagement.ts
 import { useEffect, useState } from 'react';
 import { Mission } from '../Entities/Mission';
 import { getAllMissions, createMission, updateMission, deleteMission } from '../Infrastructure/Services';
@@ -51,7 +50,6 @@ const useMissionManagement = () => {
     addMission,
     editMission,
     removeMission,
-    loadMissions,
   };
 };
 

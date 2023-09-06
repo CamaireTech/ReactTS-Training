@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Mission } from '../Entities/Mission';
-import useMissionManagement from './useMissionManagement';
+
+import { useMissionContext } from '../Core/Contexte/MissionContext';
+
 
 export function useSearchByName() {
-  const { missions } = useMissionManagement();
+  const { missions } = useMissionContext();
   const [searchResults, setSearchResults] = useState<Mission[]>(missions);
   const [searchTerm, setSearchTerm] = useState<string>('');
 

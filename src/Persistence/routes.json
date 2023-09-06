@@ -1,5 +1,6 @@
 {
     "/missions": "/missions",
     "/missions/save": "/missions",
-    "/missions/delete/:id": "/missions/:id"
+    "/missions/delete/:id": "/missions/:id",
+    "/missions/update/:id": "/missions/:id"
 }

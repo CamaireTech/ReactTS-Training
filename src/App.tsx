@@ -6,15 +6,16 @@ import { MissionProvider } from './Core/Contexte/MissionContext';
 const App: React.FC = () => {
 
   return (
-    <MissionProvider>
+    
       <div className="App">
           <main className="container mx-auto p-4">
             <h2 className="text-2xl font-semibold mb-4">Liste des Missions Spatiales</h2>
-              <AddMissionForm />
-              <MissionList />
+              <MissionProvider>
+                <AddMissionForm />
+                <MissionList />
+              </MissionProvider>
           </main>
       </div>
-    </MissionProvider>
   );
 }
 

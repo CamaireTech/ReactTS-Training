@@ -3,8 +3,9 @@ import Button from '../../Presentation/Components/Button';
 import { useSearchByName } from '../../Core/useSearchByName';
 import { useMissionContext } from '../../Core/Contexte/MissionContext';
 
+
 const MissionList: React.FC = () => {
-  const { removeMission, missions } = useMissionContext();
+  const { missions, removeMission } = useMissionContext();
 
   const { searchResults, searchTerm, handleSearch } = useSearchByName();
 

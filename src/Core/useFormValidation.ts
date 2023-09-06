@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { Mission } from '../Entities/Mission';
-import useMissionManagement  from './useMissionManagement';
+import { useMissionContext } from '../Core/Contexte/MissionContext';
 
 interface FormErrors {
   name: string | null;
@@ -10,7 +10,7 @@ interface FormErrors {
 }
 
 export function useFormValidation(closePopIn: () => void) {
-  const { addMission } = useMissionManagement();
+  const { addMission } = useMissionContext();
   const [values, setValues] = useState({
 
     name: '',
@@ -119,7 +119,13 @@ export function useFormValidation(closePopIn: () => void) {
         updatedAt: null,
       };
 
-      addMission(newMission);
+      addMission(newMission)
+      .then(() => {
+        alert('Mission Added successfully');
+      })
+      .catch((error) => {
+        console.error('Error adding mission: ', error);
+      });
 
       clearForm();
       closePopIn();
