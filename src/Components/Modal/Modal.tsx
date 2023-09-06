@@ -6,6 +6,7 @@ import { MissionContext } from '../../Context/MissionContext';
 import { IMissionInterface, MissionContextType } from '../../types/Mission';
 import {TiDeleteOutline} from "react-icons/ti"
 import { checkFields } from '../../Utils/verifyInput';
+import Button from '../Button/Button';
 
 interface ModalProps {
     isOpen : boolean | undefined
@@ -27,10 +28,9 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
     const [crewMembers,setCrewMembers] = useState<string[]>([])
     const [crewname,setCrewName] = useState<string>("")
 
-    //UUID of newly created Mission
-    let theId = uuidv4()
+
     const handleAddMission = async()=>{
-        let mission:IMissionInterface = new Mission(theId,name,description,crewMembers,launchDate)
+        let mission:IMissionInterface = new Mission(uuidv4(),name,description,crewMembers,launchDate)
         //Validating fields a second time
             if(
                 checkFields([
@@ -41,7 +41,8 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
              ])
              
              ){
-                            //Save mission to database
+
+            //Save mission to database
             saveMission(mission)
 
             //Resetting input Fileds After Mission Submission
@@ -52,8 +53,6 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
             setCrewAmt(0)
             setLaunch("")
             handleModal()
-             }else{
-                
              }
 
     }
@@ -126,17 +125,25 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
                 <div>
                     <div>
                         <input 
-                            required
                             ref={crewRef} 
                             type='text' 
                             value={crewname} 
                             onChange={e=>setCrewName(e.target.value)} />
-                        <button disabled={crewname.length == 0} onClick={handleAddCrew}>Add Crew</button>
+                            <Button 
+                                title='Add Crew'
+                                btnCallback={handleAddCrew}
+                                disabled = {crewname.length == 0}
+                                />
                         {crewMembers.length === 0 && <p className='error'>At list one crew member is required</p>}
                     </div>
                 </div>
             </div>
-            <button disabled={!checkInputs()} className='bigBtn' onClick={handleAddMission}>Add Mission</button>
+            <Button 
+                fullWidth 
+                title='Add Mission' 
+                disabled={!checkInputs()}
+                btnCallback={handleAddMission}
+                />
         </form>
     </div>
     )

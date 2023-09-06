@@ -2,9 +2,7 @@ import React,{useState} from 'react';
 import  {AiOutlinePlusSquare} from "react-icons/ai"
 import { Modal } from '../../Components/Modal/Modal';
 import { AllMissions } from '../../Components/MissionList/Missions';
-interface Mission {
-  name:string
-}
+
 
 export const Home = () => {
 
@@ -19,18 +17,30 @@ export const Home = () => {
 
   return (
     <div className="MainApplication">
+
       <div id='missionDisplay'>
+
         <p> Name : <b> Ojong Clinton </b></p>
+
         <div className='addMissinContainer' onClick={handleModalState}>
+
           <AiOutlinePlusSquare size={40} />
+
           <p>Add a mission</p>
+
         </div>
+
         <Modal isOpen ={modalOpen} handleModal={handleModalState}/>
-        {/*Here would be the search box for searching and filtering mission*/}
+
+
         <div className='missionsContainer'>
+
           <AllMissions />
+
         </div>
+
       </div>
+
     </div>
   );
 }
