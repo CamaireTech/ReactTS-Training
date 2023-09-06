@@ -1,5 +1,5 @@
 import api from "../Utils/api";
-import { IMissionInterface } from "../types/Mission";
+import { IMissionInterface } from "../Datatypes/Mission";
 
 type apiMiddleWareProps = {
     action:{

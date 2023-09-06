@@ -1,5 +1,5 @@
 import {createContext,useEffect,useState } from "react";
-import { MissionContextType,IMissionInterface } from "../types/Mission";
+import { MissionContextType,IMissionInterface } from "../Datatypes/Mission";
 import { Mission } from "../Models/Mission";
 import { FiCommand } from "react-icons/fi";
 import apiMiddleware from "../Middleware/ApiMiddleWare";
@@ -11,7 +11,6 @@ export const MissionContext = createContext<MissionContextType | null>(null)
 export const MissionProvider:React.FC<{children:React.ReactNode}> = ({ children}) =>{
     const [missions,setMissions] = useState<IMissionInterface[]>([])
 
-    //Display Loading icon while still fetching List of missions from Fake Db
     const [missionLoading,setMissionLoading] = useState(true)
 
     const setInitialMissions =(data:IMissionInterface[])=>{
@@ -19,7 +18,6 @@ export const MissionProvider:React.FC<{children:React.ReactNode}> = ({ children}
         setMissions(data)
     }
 
-    //Getting initial data from server (db.json)
     useEffect(()=>{
         apiMiddleware({action:{type:"FETCH_MISSIONS"},
                     successCallback:(data)=>{setInitialMissions(data.data)},
@@ -48,7 +46,6 @@ export const MissionProvider:React.FC<{children:React.ReactNode}> = ({ children}
 
     }
 
-    //Deleting single Mission
     const deleteMission = async (id:string) =>{
         const theMission = missions.find(singleMission => singleMission.id === id)
 

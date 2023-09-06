@@ -1,6 +1,6 @@
 import React, {useContext,useState,useEffect} from "react"
 import { MissionContext } from "../../Context/MissionContext"
-import { IMissionInterface, MissionContextType } from "../../types/Mission"
+import { IMissionInterface, MissionContextType } from "../../Datatypes/Mission"
 import { SingleMission } from "../SIngleMission/SingleSummaryMission"
 import { SingleDetailedMission } from "../SIngleMission/SingleDetailedMission"
 import { SearchMissions } from "../SearchMissions/SearchMission"
@@ -26,11 +26,10 @@ export const AllMissions = () =>{
 
     useEffect(()=>{
         if(searchString.length === 0 ){
-            //In case of no searchString, reset Missions Array
             setAllMission(missions)
         }
         else if (searchString.length > 0){
-            //Search Based on name and description
+
             setAllMission(
                 missions.filter(mission=>
                     mission.description.toLocaleLowerCase().includes(searchString.toLocaleLowerCase()) || 
@@ -46,7 +45,6 @@ export const AllMissions = () =>{
                 setSearchString={setSearchString}
                 />
 
-        {/* LIST OF ALL MISSIONS  */}
         <div className="missionListContainer">
             <div className="missionList">
             {allMissions.map((mission,index)=>{
@@ -58,7 +56,6 @@ export const AllMissions = () =>{
             })}
             {allMissions.length === 0 && <h3>Auccun Element trouver</h3>}
             </div>
-                {/* DETAILS OF SELECTED MISSION */}
                 <div className="selectedMissionDetails">
                     <SingleDetailedMission  mission={selectedMission} deleteMission={deleteThisMission} />
                 </div>

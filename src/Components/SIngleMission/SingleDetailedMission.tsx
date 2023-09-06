@@ -1,4 +1,4 @@
-import { IMissionInterface } from "../../types/Mission"
+import { IMissionInterface } from "../../Datatypes/Mission"
 import {MdOutlineDelete} from "react-icons/md"
 
 export const SingleDetailedMission = ({mission,deleteMission}:{mission:IMissionInterface | null,deleteMission:any}) =>{

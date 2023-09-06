@@ -3,7 +3,7 @@ import {AiOutlineCloseSquare} from 'react-icons/ai'
 import { Mission } from '../../Models/Mission'
 import { v4 as uuidv4 } from 'uuid';
 import { MissionContext } from '../../Context/MissionContext';
-import { IMissionInterface, MissionContextType } from '../../types/Mission';
+import { IMissionInterface, MissionContextType } from '../../Datatypes/Mission';
 import {TiDeleteOutline} from "react-icons/ti"
 import { checkFields } from '../../Utils/verifyInput';
 import Button from '../Button/Button';
@@ -15,10 +15,10 @@ interface ModalProps {
 
 export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
 
-    //Getting the missions from the Context. Making it available to the Search bar, Modal box, etc
+
     const {saveMission} = useContext(MissionContext) as MissionContextType
 
-    //Name Launchdate, crew, description
+
     const crewRef = useRef<HTMLInputElement>(null)
     const [name,setName] = useState<string>("")
     const [launchDate,setLaunch] = useState<string>("")
@@ -31,7 +31,6 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
 
     const handleAddMission = async()=>{
         let mission:IMissionInterface = new Mission(uuidv4(),name,description,crewMembers,launchDate)
-        //Validating fields a second time
             if(
                 checkFields([
                 {name:'name',data:name},
@@ -42,10 +41,9 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
              
              ){
 
-            //Save mission to database
             saveMission(mission)
 
-            //Resetting input Fileds After Mission Submission
+
             setCrewMembers([])
             setCrewName("")
             setName("")
@@ -63,8 +61,7 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
         setCrewName("")
     }
 
-    //Function to make sure all inputs are entered before enabling addMission button
-    let checkInputs =()=>{
+    let validateInputs =()=>{
         if(crewMembers.length > 0 && name.length > 0 && description.length > 0 && launchDate){
             return true
         }
@@ -141,7 +138,7 @@ export const Modal:React.FC<ModalProps> = ({isOpen,handleModal}) =>{
             <Button 
                 fullWidth 
                 title='Add Mission' 
-                disabled={!checkInputs()}
+                disabled={!validateInputs()}
                 btnCallback={handleAddMission}
                 />
         </form>
