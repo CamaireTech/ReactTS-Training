@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Button from '../../Presentation/Components/Button';
-import { useSearchByName } from '../../Logic/useSearchByName';
-import { useMissionContext } from '../../Logic/Contexte/MissionContext';
+import { useSearchByName } from '../../Core/useSearchByName';
+import { useMissionContext } from '../../Core/Contexte/MissionContext';
 
 const MissionList: React.FC = () => {
   const { removeMission, missions } = useMissionContext();

@@ -77,10 +77,10 @@ The app uses JSON Server to simulate a backend for mission data. To start the JS
 
 3. Start JSON Server:
    ```sh
-   json-server --watch db.json --port 4000 --routes routes.json
+   json-server --watch db.json --port 3032 --routes routes.json
    ```
 
-The JSON Server will run at `http://localhost:4000/` and provide endpoints for mission data.
+The JSON Server will run at `http://localhost:3032/` and provide endpoints for mission data.
 
 ## Usage
 

@@ -4,7 +4,7 @@ export interface Mission {
   launchDate: string;
   crew: string[];
   description: string;
-  state: number;
-  createdAt: string;
-  updatedAt: string;
+  state: boolean;
+  createdAt: Date | null;
+  updatedAt: Date | null;
 }

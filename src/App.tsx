@@ -1,7 +1,7 @@
 import React from 'react';
 import AddMissionForm from './Presentation/Screens/AddMissionForm';
 import MissionList from './Presentation/Screens/MissionList';
-import { MissionProvider } from './Logic/Contexte/MissionContext';
+import { MissionProvider } from './Core/Contexte/MissionContext';
 
 const App: React.FC = () => {
 

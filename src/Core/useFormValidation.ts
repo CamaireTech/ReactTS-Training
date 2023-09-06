@@ -114,9 +114,9 @@ export function useFormValidation(closePopIn: () => void) {
         launchDate: values.launchDate,
         crew: crewBuffer.current,
         description: values.description,
-        state: 1,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
+        state: true,
+        createdAt: new Date(),
+        updatedAt: null,
       };
 
       addMission(newMission);

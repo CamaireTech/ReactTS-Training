@@ -1,7 +1,7 @@
 // MissionContext.tsx
 import React, { createContext, useContext, ReactNode, useEffect, useState } from 'react';
 import { Mission } from '../../Entities/Mission';
-import { readMissions, createMission, updateMission, deleteMission } from '../../Infrastructure/Services';
+import { getAllMissions, createMission, updateMission, deleteMission } from '../../Infrastructure/Services';
 
 interface MissionContextProviderProps {
   children: ReactNode;
@@ -30,7 +30,7 @@ export const MissionProvider: React.FC<MissionContextProviderProps> = ({ childre
 
   const loadMissions = async () => {
     try {
-      const missionData = await readMissions();
+      const missionData = await getAllMissions();
       setMissions(missionData);
     } catch (error) {
       console.error('Error loading missions:', error);

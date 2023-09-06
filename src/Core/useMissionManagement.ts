@@ -1,7 +1,7 @@
 // useMissionManagement.ts
 import { useEffect, useState } from 'react';
 import { Mission } from '../Entities/Mission';
-import { readMissions, createMission, updateMission, deleteMission } from '../Infrastructure/Services';
+import { getAllMissions, createMission, updateMission, deleteMission } from '../Infrastructure/Services';
 
 const useMissionManagement = () => {
   const [missions, setMissions] = useState<Mission[]>([]);
@@ -39,7 +39,7 @@ const useMissionManagement = () => {
 
   const loadMissions = async () => {
     try {
-      const missionData = await readMissions();
+      const missionData = await getAllMissions();
       setMissions(missionData);
     } catch (error) {
       console.error('Error loading missions:', error);

@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from '../Components/Button';
-import usePopInLogic from '../../Logic/usePopInLogic';
+import usePopInLogic from '../../Core/usePopInLogic';
 import PopIn from '../Components/PopIn';
-import { useFormValidation } from '../../Logic/useFormValidation';
+import { useFormValidation } from '../../Core/useFormValidation';
 
 const AddMissionForm: React.FC = () => {
   const { isPopInOpen, openPopIn, closePopIn } = usePopInLogic();
@@ -30,9 +30,7 @@ const AddMissionForm: React.FC = () => {
       </Button>
       {isPopInOpen && (
         <PopIn isOpen={isPopInOpen} onClose={closePopIn}>
-          {/* Form */}
           <form>
-            {/* Name */}
             <div className="mb-4">
               <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
                 Name:
@@ -51,7 +49,6 @@ const AddMissionForm: React.FC = () => {
               {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
             </div>
 
-            {/* Launch Date */}
             <div className="mb-4">
               <label htmlFor="launchDate" className="block font-medium">
                 Launch Date:
@@ -70,7 +67,6 @@ const AddMissionForm: React.FC = () => {
               )}
             </div>
 
-            {/* Crew */}
             <div className="flex">
               <input
                 type="text"
@@ -106,9 +102,7 @@ const AddMissionForm: React.FC = () => {
                 </li>
               ))}
             </ul>
-      
 
-            {/* Description */}
             <div className="mb-4">
               <label htmlFor="description" className="block text-gray-700 font-bold mb-2">
                 Description:
@@ -123,8 +117,7 @@ const AddMissionForm: React.FC = () => {
                 className="w-full px-3 py-2 border rounded-lg border-gray-300 focus:outline-none focus:ring focus:border-blue-500"
               />
             </div>
-
-            {/* Submit Button */}
+            
             <div className="mt-4">
               <button
                 type="button"

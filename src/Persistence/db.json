@@ -10,7 +10,7 @@
         "Michael Collins"
       ],
       "description": "First manned mission to land on the Moon",
-      "state": 0,
+      "state": true,
       "createdAt": "2023-08-01T12:00:00.000Z",
       "updatedAt": "2023-08-01T12:00:00.000Z"
     },
@@ -22,7 +22,7 @@
         "None"
       ],
       "description": "Interstellar probe launched by NASA",
-      "state": "1",
+      "state": true,
       "createdAt": "2023-08-02T12:00:00.000Z",
       "updatedAt": "2023-08-02T12:00:00.000Z"
     },
@@ -34,7 +34,7 @@
         "None"
       ],
       "description": "Space telescope in low Earth orbit",
-      "state": "1",
+      "state": true,
       "createdAt": "2023-08-03T12:00:00.000Z",
       "updatedAt": "2023-08-03T12:00:00.000Z"
     },
@@ -46,7 +46,7 @@
         "None"
       ],
       "description": "NASA's car-sized rover exploring Mars",
-      "state": "1",
+      "state": true,
       "createdAt": "2023-08-04T12:00:00.000Z",
       "updatedAt": "2023-08-04T12:00:00.000Z"
     },
@@ -58,7 +58,7 @@
         "Multiple astronauts from various countries"
       ],
       "description": "Habitat and laboratory for astronauts in orbit",
-      "state": 0,
+      "state": true,
       "createdAt": "2023-08-05T12:00:00.000Z",
       "updatedAt": "2023-08-05T12:00:00.000Z"
     },
@@ -70,7 +70,7 @@
         "None"
       ],
       "description": "NASA rover mission to Mars",
-      "state": "1",
+      "state": true,
       "createdAt": "2023-08-06T12:00:00.000Z",
       "updatedAt": "2023-08-06T12:00:00.000Z"
     },
@@ -82,7 +82,7 @@
         "None"
       ],
       "description": "NASA probe to study Pluto and the Kuiper Belt",
-      "state": "1",
+      "state": true,
       "createdAt": "2023-08-07T12:00:00.000Z",
       "updatedAt": "2023-08-07T12:00:00.000Z"
     },
@@ -94,7 +94,7 @@
         "None"
       ],
       "description": "A successor to the original Hubble Space Telescope",
-      "state": "1",
+      "state": true,
       "createdAt": "2023-08-08T12:00:00.000Z",
       "updatedAt": "2023-08-08T12:00:00.000Z"
     },
@@ -106,7 +106,7 @@
         "None"
       ],
       "description": "NASA's rover mission to explore Mars",
-      "state": 1,
+      "state": true,
       "createdAt": "2023-08-09T12:00:00.000Z",
       "updatedAt": "2023-08-09T12:00:00.000Z"
     },
@@ -118,7 +118,7 @@
         "ryan"
       ],
       "description": "this is a test",
-      "state": 1,
+      "state": true,
       "createdAt": "2023-09-04T16:42:25.268Z",
       "updatedAt": "2023-09-04T16:42:25.268Z"
     },
@@ -130,7 +130,7 @@
         "rton"
       ],
       "description": "nijnijn",
-      "state": 1,
+      "state": true,
       "createdAt": "2023-09-04T16:54:34.119Z",
       "updatedAt": "2023-09-04T16:54:34.119Z"
     },
@@ -142,7 +142,7 @@
         "hijoio"
       ],
       "description": "jniohiohnui",
-      "state": 0,
+      "state": true,
       "createdAt": "2023-09-04T17:04:04.095Z",
       "updatedAt": "2023-09-04T17:04:04.095Z"
     },
@@ -162,7 +162,7 @@
       "launchDate": "2023-09-28",
       "crew": [],
       "description": "test",
-      "state": 1,
+      "state": false,
       "createdAt": "2023-09-05T11:29:36.083Z",
       "updatedAt": "2023-09-05T11:29:36.083Z"
     }
