@@ -1,5 +1,3 @@
-// DatePickerField.tsx
-
 import React from 'react';
 
 interface DatePickerFieldProps {

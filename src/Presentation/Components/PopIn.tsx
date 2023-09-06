@@ -2,14 +2,14 @@ import React from 'react';
 import Button from './Button';
 
 interface PopInProps {
-  isOpen: boolean; // Define the isOpen prop
+  isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
 }
 
 const PopIn: React.FC<PopInProps> = ({ isOpen, onClose, children }) => {
   if (!isOpen) {
-    return null; // Render nothing if the pop-in is not open
+    return null;
   }
 
   return (

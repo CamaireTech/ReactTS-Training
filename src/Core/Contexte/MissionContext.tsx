@@ -2,7 +2,6 @@ import React, { ReactNode, useContext } from 'react';
 import useMissionManagement from '../useMissionManagement';
 import { Mission } from '../../Entities/Mission';
 
-// Define the type for your context
 interface MissionContextType {
   missions: Mission[];
   addMission: (mission: Mission) => Promise<void>;
@@ -10,7 +9,6 @@ interface MissionContextType {
   removeMission: (missionId: string) => Promise<void>;
 }
 
-// Create the context with the specified type
 const MissionContext = React.createContext<MissionContextType | null>(null);
 
 export function useMissionContext() {

@@ -5,7 +5,7 @@ import { useMissionContext } from '../../Core/Contexte/MissionContext';
 
 
 const MissionList: React.FC = () => {
-  const { missions, removeMission } = useMissionContext();
+  const { removeMission } = useMissionContext();
 
   const { searchResults, searchTerm, handleSearch } = useSearchByName();
 
